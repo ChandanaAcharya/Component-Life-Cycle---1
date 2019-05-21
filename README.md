@@ -1,2 +1,56 @@
-# Component-Life-Cycle---1
-It contains all the stages of the component life cycle
+import React from 'react'; 
+import ReactDOM from 'react-dom'; 
+  
+class Test extends React.Component { 
+    constructor(props) 
+    { 
+        super(props); 
+        this.state = { hello : "World!" }; 
+    } 
+  
+    componentWillMount() 
+    { 
+        console.log("componentWillMount()"); 
+    } 
+  
+    componentDidMount() 
+    { 
+        console.log("componentDidMount()"); 
+    } 
+  
+    changeState() 
+    { 
+        this.setState({ hello : "Softvisioners!" }); 
+    } 
+  
+    render() 
+    { 
+        return ( 
+            <div> 
+            <h1>Softvision.org, Hello{ this.state.hello }</h1> 
+            <h2> 
+             <a onClick={this.changeState.bind(this)}>Press Here!</a> 
+            </h2> 
+            </div>); 
+    } 
+  
+    shouldComponentUpdate(nextProps, nextState) 
+    { 
+        console.log("shouldComponentUpdate()"); 
+        return true; 
+    } 
+  
+    componentWillUpdate() 
+    { 
+        console.log("componentWillUpdate()"); 
+    } 
+  
+    componentDidUpdate() 
+    { 
+        console.log("componentDidUpdate()"); 
+    } 
+} 
+  
+ReactDOM.render( 
+    <Test />, 
+    document.getElementById('root'));
